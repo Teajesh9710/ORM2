@@ -20,10 +20,32 @@ Execute Django admin and create details for 5 Car
 
 ## PROGRAM
 
-Include Your program
+
+```
+models.py
+from django.db import models
+from django.contrib import admin
+
+class CARs(models.Model):
+    SNO = models.CharField(max_length=255, help_text="Car_id")
+    Brand = models.CharField(max_length=100, help_text="Brand Name")
+    Model = models.CharField(help_text="Model Number")
+    Year = models.CharField(max_length=50, help_text="Release Year")
+    Rating = models.DecimalField(max_digits=3, decimal_places=1, help_text="Cae Rating (e.g., 8.5)")
+    Color = models.CharField(help_text="Car Outer color")
+
+class CARsAdmin(admin.ModelAdmin):
+    list_display = ('SNO', 'Brand', 'Model', 'Year', 'Rating','Color')
+
+admin.py
+from django.contrib import admin
+from.models import CARs,CARsAdmin
+admin.site.register(CARs,CARsAdmin)
+```
 
 ## OUTPUT
-Include your output
+
+![alt text](carsprojects.png)
 
 
 
